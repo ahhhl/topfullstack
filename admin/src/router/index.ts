@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Main from '../views/Main.vue';
 import HomeView from '../views/HomeView.vue';
+import CourseList from '@/views/courses/CourseList.vue';
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,11 @@ const routes: RouteConfig[] = [
         name: 'home',
         path: '/',
         component: HomeView,
+      },
+      {
+        name: 'course-list',
+        path: '/courses/list',
+        component: CourseList,
       },
     ],
   },

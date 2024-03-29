@@ -5,6 +5,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AdminModule);
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('接口API')
     .setDescription('供后台管理界面调用的服务端API')
