@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@smallwei/avue':
+    specifier: ^2.12.0
+    version: 2.12.0(element-ui@2.15.14)(vue@2.7.16)
   axios:
     specifier: ^1.6.8
     version: 1.6.8
@@ -1504,6 +1507,20 @@ packages:
   /@sideway/pinpoint@2.0.0:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: true
+
+  /@smallwei/avue@2.12.0(element-ui@2.15.14)(vue@2.7.16):
+    resolution: {integrity: sha512-D1Iw+EqrBFWKigmiwcCkwk0omwHtbrqxe3IhWOtx3lISyRUDpcFt/nNiPc3jl8sl6xnEytUo66wN44kSExOBIQ==}
+    peerDependencies:
+      element-ui: '>=2.15.3'
+      vue: '>=2.5.17'
+    dependencies:
+      countup.js: 1.9.3
+      dayjs: 1.11.10
+      element-ui: 2.15.14(vue@2.7.16)
+      nprogress: 0.2.0
+      vue: 2.7.16
+      vue-cropper: 0.5.11
+    dev: false
 
   /@soda/friendly-errors-webpack-plugin@1.8.1(webpack@5.91.0):
     resolution: {integrity: sha512-h2ooWqP8XuFqTXT+NyAFbrArzfQA7R6HTezADrvD9Re8fxMLTPPniLdqVTdDaO0eIoLaAwKT+d6w+5GeTk7Vbg==}
@@ -3449,6 +3466,10 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
     dev: true
+
+  /countup.js@1.9.3:
+    resolution: {integrity: sha512-UHf2P/mFKaESqdPq+UdBJm/1y8lYdlcDd0nTZHNC8cxWoJwZr1Eldm1PpWui446vDl5Pd8PtRYkr3q6K4+Qa5A==}
+    dev: false
 
   /cross-spawn@5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==}
@@ -5456,6 +5477,10 @@ packages:
       path-key: 3.1.1
     dev: true
 
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
+
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
@@ -7099,6 +7124,10 @@ packages:
   /vue-cli-plugin-element@1.0.1:
     resolution: {integrity: sha512-OJSOnJtn7f1v/8xX+MJae+RrE8WguhiiG9QTBx/MNOPXYsxqut6Ommo+ZD3raNc7eryhqdM2T/DlMfdvIKpCtw==}
     dev: true
+
+  /vue-cropper@0.5.11:
+    resolution: {integrity: sha512-UeA3qL2BLCTGkOEAxEsxSNFO+qLYAn6YRHv4oS32cP9lMhF1vFmnAf/z+ZamtR0/Fh3sbZeZUCLVR2Ol2/dpTQ==}
+    dev: false
 
   /vue-ele-form@0.8.58:
     resolution: {integrity: sha512-SgMchIZ1Pt4r3fZS5lDCsl8M2+qdIX0uWJllqHCiCFVWxLCD/ugTH8ZKEckBnSEvQVUUFQ2I0q4uaFLoMbMa8Q==}
