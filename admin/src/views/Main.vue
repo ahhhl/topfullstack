@@ -2,23 +2,34 @@
   <div>
     <el-container>
       <el-aside width="200px">
-        <el-menu mode="vertical" style="height: 100vh;" :default-active="$route.path" router>
-          <el-submenu v-for="(item, index) in menu.items" :index="`${index + 1}`" :key="`menu-item-${index}`">
-            <template slot="title">{{item.title}}</template>
-            <el-menu-item v-for="(subItem, subIndex) in item.items" :index="subItem.path" :key="`menu-item-${index}-${subIndex}`">
-              {{subItem.title}}
+        <el-menu
+          mode="vertical"
+          style="height: 100vh"
+          :default-active="$route.path"
+          router
+        >
+          <el-submenu
+            v-for="(item, index) in menu.items"
+            :index="`${index + 1}`"
+            :key="`menu-item-${index}`"
+          >
+            <template slot="title">{{ item.title }}</template>
+            <el-menu-item
+              v-for="(subItem, subIndex) in item.items"
+              :index="subItem.path"
+              :key="`menu-item-${index}-${subIndex}`"
+            >
+              {{ subItem.title }}
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
 
       <el-container>
-        <el-header>
-          后台管理界面
-        </el-header>
+        <el-header> 后台管理界面 </el-header>
         <el-container>
           <el-main height="">
-            <router-view></router-view>
+            <router-view :key="$route.path"></router-view>
           </el-main>
           <el-footer height="">
             <!-- Footer content -->
@@ -26,7 +37,6 @@
         </el-container>
       </el-container>
     </el-container>
-
   </div>
 </template>
 
