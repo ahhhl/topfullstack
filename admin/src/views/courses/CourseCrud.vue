@@ -7,7 +7,13 @@
       @click="$router.push('/courses/create')"
       >创建课程</el-button
     > -->
-    <avue-crud :option="option" :data="data.data"></avue-crud>
+    <avue-crud
+      :option="option"
+      :data="data.data"
+      @row-save="create"
+      @row-update="update"
+      @row-del="remove"
+    ></avue-crud>
   </div>
 </template>
 
@@ -29,14 +35,27 @@ export default class extends Vue {
     const res = await this.$http.get('courses');
     this.data = res.data;
   }
-  created() {
+  async create(row: any, done: any) {
+    await this.$http.post('/courses', row);
+    this.$message.success('创建成功');
     this.fetch();
+    done();
+  }
+
+  async update(row: any, index: any, done: any) {
+    await this.$http.put(`/courses/${row._id}`, row);
+    this.$message.success('修改成功');
+    this.fetch();
+    done();
   }
 
   async remove(row: any) {
     await this.$confirm('是否确认删除？');
     await this.$http.delete(`courses/${row._id}`);
     this.$message.success('删除成功');
+    this.fetch();
+  }
+  created() {
     this.fetch();
   }
 }
