@@ -8,6 +8,7 @@
       >创建课程</el-button
     > -->
     <avue-crud
+      v-if="option.column"
       :option="option"
       :data="data.data"
       @row-save="create"
@@ -18,32 +19,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
 export default class extends Vue {
+  @Prop(String) resource!: string;
   data = {};
-  option = {
-    title: '课程管理',
-    column: [
-      { label: '课程名称', prop: 'name' },
-      { label: '课程封面图', prop: 'cover' },
-    ],
-  };
+  option = {};
 
   async fetch() {
-    const res = await this.$http.get('courses');
+    const res = await this.$http.get(this.resource);
     this.data = res.data;
   }
+  async fetchOption() {
+    const res = await this.$http.get(`${this.resource}/option`);
+    this.option = res.data;
+  }
   async create(row: any, done: any) {
-    await this.$http.post('/courses', row);
+    await this.$http.post(this.resource, row);
     this.$message.success('创建成功');
     this.fetch();
     done();
   }
 
   async update(row: any, index: any, done: any) {
-    await this.$http.put(`/courses/${row._id}`, row);
+    await this.$http.put(`${this.resource}/${row._id}`, row);
     this.$message.success('修改成功');
     this.fetch();
     done();
@@ -51,11 +51,12 @@ export default class extends Vue {
 
   async remove(row: any) {
     await this.$confirm('是否确认删除？');
-    await this.$http.delete(`courses/${row._id}`);
+    await this.$http.delete(`${this.resource}/${row._id}`);
     this.$message.success('删除成功');
     this.fetch();
   }
   created() {
+    this.fetchOption();
     this.fetch();
   }
 }

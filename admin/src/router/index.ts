@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Main from '../views/Main.vue';
 import HomeView from '../views/HomeView.vue';
-import CourseCrud from '@/views/courses/CourseCrud.vue';
+import ResourceCrud from '@/views/ResourceCrud.vue';
 import CourseList from '@/views/courses/CourseList.vue';
 import CourseEdit from '@/views/courses/CourseEdit.vue';
 
@@ -19,10 +19,17 @@ const routes: RouteConfig[] = [
         component: HomeView,
       },
       {
-        name: 'course-list',
-        path: '/courses/list',
-        component: CourseCrud,
+        name: 'resource-list',
+        path: '/:resource/list',
+        component: ResourceCrud,
+        props: true,
       },
+      // {
+      //   name: 'episode-list',
+      //   path: '/:resource/list',
+      //   component: ResourceCrud,
+      //   props: true,
+      // },
       // {
       //   name: 'course-list',
       //   path: '/courses/list',
