@@ -11,9 +11,11 @@
       v-if="option.column"
       :option="option"
       :data="data.data"
+      :page="page"
       @row-save="create"
       @row-update="update"
       @row-del="remove"
+      @on-load="changePage"
     ></avue-crud>
   </div>
 </template>
@@ -26,10 +28,30 @@ export default class extends Vue {
   @Prop(String) resource!: string;
   data = {};
   option = {};
+  page = {
+    total: 0,
+    currentPage: 1,
+    pageSize: 10,
+  };
+
+  query: any = {
+    limit: this.page.pageSize,
+  };
+
+  async changePage(page: any) {
+    this.query.limit = page.pageSize;
+    this.query.page = page.currentPage;
+    this.fetch();
+  }
 
   async fetch() {
-    const res = await this.$http.get(this.resource);
+    const res = await this.$http.get(`${this.resource}`, {
+      params: {
+        query: JSON.stringify(this.query),
+      },
+    });
     this.data = res.data;
+    this.page.total = res.data.total;
   }
   async fetchOption() {
     const res = await this.$http.get(`${this.resource}/option`);
@@ -57,7 +79,7 @@ export default class extends Vue {
   }
   created() {
     this.fetchOption();
-    this.fetch();
+    // this.fetch();
   }
 }
 </script>
