@@ -17,6 +17,7 @@
       @row-del="remove"
       @on-load="changePage"
       @sort-change="changeSort"
+      @search-change="search"
     ></avue-crud>
   </div>
 </template>
@@ -55,6 +56,18 @@ export default class extends Vue {
       };
     }
     this.fetch();
+  }
+
+  async search(where, done) {
+    for (const key in where) {
+      const field = this.option.column.find((v: any) => v.prop === key);
+      if (field.regex) {
+        where[key] = { $regex: where[key] };
+      }
+    }
+    this.query.where = where;
+    this.fetch();
+    done();
   }
 
   async fetch() {
