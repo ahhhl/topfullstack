@@ -16,6 +16,7 @@
       @row-update="update"
       @row-del="remove"
       @on-load="changePage"
+      @sort-change="changeSort"
     ></avue-crud>
   </div>
 </template>
@@ -35,12 +36,24 @@ export default class extends Vue {
   };
 
   query: any = {
-    limit: this.page.pageSize,
+    // limit: this.page.pageSize,
+    // sort: { _id: 0 },
   };
 
   async changePage(page: any) {
     this.query.limit = page.pageSize;
     this.query.page = page.currentPage;
+    this.fetch();
+  }
+
+  async changeSort({ prop, order }) {
+    if (!order) {
+      this.query.sort = null;
+    } else {
+      this.query.sort = {
+        [prop]: order === 'ascending' ? 1 : -1,
+      };
+    }
     this.fetch();
   }
 
