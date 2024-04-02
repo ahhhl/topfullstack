@@ -25,8 +25,18 @@ export class CoursesController {
           sortable: true,
           search: true,
           regex: true,
+          row: true,
         },
-        { label: '课程封面图', prop: 'cover' },
+        {
+          label: '课程封面图',
+          prop: 'cover',
+          type: 'upload',
+          listType: 'picture',
+          fileType: 'img',
+          row: true,
+          action: 'upload',
+          width: 120,
+        },
       ],
     };
   }

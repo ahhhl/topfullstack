@@ -15,4 +15,9 @@ export default class App extends Vue {}
 body {
   margin: 0;
 }
+
+.el-upload-list--picture .el-upload-list__item,
+.el-upload-list__item-thumbnail {
+  height: auto !important;
+}
 </style>

@@ -1,11 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AdminModule } from './admin.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AdminModule);
+  const app = await NestFactory.create<NestExpressApplication>(AdminModule);
 
   app.enableCors();
+  // useStaticAssets(publicPath, options)
+  app.useStaticAssets('uploads', {
+    prefix: '/uploads',
+  });
 
   const config = new DocumentBuilder()
     .setTitle('接口API')

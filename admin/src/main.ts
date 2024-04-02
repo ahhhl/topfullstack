@@ -9,11 +9,14 @@ import EleForm from 'vue-ele-form';
 // 注册 vue-ele-form
 Vue.use(EleForm);
 
-Vue.config.productionTip = false;
-
-Vue.prototype.$http = axios.create({
+const http = axios.create({
   baseURL: 'http://localhost:3000',
 });
+
+Vue.config.productionTip = false;
+// Avue upload组件请求
+Vue.prototype.$axios = http;
+Vue.prototype.$http = http;
 
 new Vue({
   router,
