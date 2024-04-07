@@ -31,7 +31,7 @@ export class CoursesController {
           label: '课程封面图',
           prop: 'cover',
           type: 'upload',
-          listType: 'picture',
+          listType: 'picture-img',
           fileType: 'img',
           row: true,
           action: 'upload',
