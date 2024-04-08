@@ -28,8 +28,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({})
 export default class extends Vue {
   @Prop(String) resource!: string;
-  data = {};
-  option = {};
+  data: { [k: string]: any } = {};
+  option: { [k: string]: any } = {};
   page = {
     total: 0,
     currentPage: 1,
