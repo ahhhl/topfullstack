@@ -17,7 +17,7 @@ body {
 }
 
 .el-upload-list--picture .el-upload-list__item,
-.el-upload-list__item-thumbnail {
+.avue-upload__avatar {
   height: auto !important;
 }
 </style>

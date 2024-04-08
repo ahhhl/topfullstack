@@ -8,9 +8,9 @@ async function bootstrap() {
 
   app.enableCors();
   // useStaticAssets(publicPath, options)
-  app.useStaticAssets('uploads', {
-    prefix: '/uploads',
-  });
+  // app.useStaticAssets('uploads', {
+  //   prefix: '/uploads',
+  // });
 
   const config = new DocumentBuilder()
     .setTitle('接口API')
@@ -19,7 +19,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
-
-  await app.listen(3000);
+  const port = process.env.ADMIN_PORT || 5000;
+  await app.listen(port);
 }
 bootstrap();

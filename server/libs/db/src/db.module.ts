@@ -10,7 +10,14 @@ const models = TypegooseModule.forFeature([User, Course, Episode]);
 @Global()
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://localhost:7017/topfullstack', {}),
+    // 异步加载
+    TypegooseModule.forRootAsync({
+      useFactory() {
+        return {
+          uri: process.env.DB,
+        };
+      },
+    }),
     models,
   ],
   providers: [DbService],
