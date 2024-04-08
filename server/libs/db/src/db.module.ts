@@ -10,12 +10,7 @@ const models = TypegooseModule.forFeature([User, Course, Episode]);
 @Global()
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://localhost:7017/topfullstack', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: true,
-    }),
+    TypegooseModule.forRoot('mongodb://localhost:7017/topfullstack', {}),
     models,
   ],
   providers: [DbService],
